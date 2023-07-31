@@ -1,6 +1,8 @@
+
 import TextField from "@material-ui/core/TextField";
 import React , { useState } from "react";
 import Button from "@material-ui/core/Button";
+// eslint-disable-next-line 
 import Container from "@material-ui/core/Container";
 import axios from "axios";
 import CountryInformation from "./CountryInformation";
@@ -59,7 +61,10 @@ const CountryForm = () => {
 
   return (
     <>
-      <Container fixed>
+      {/* <Container fixed style={{ height:'100%',backgroundColor:'red',
+          //  background: "linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%)",
+           }}>  */}
+           <div style={{}}>
         <TextField
           id="standard-basic"
           type="text"
@@ -70,7 +75,7 @@ const CountryForm = () => {
         />
 
         <Button
-          style={{ marginLeft: "20px", backgroundColor: "#f0dab0" }}
+          style={{ marginLeft: "20px", backgroundColor: "#b394eb" ,marginTop:'1%',borderRadius:"25px",borderWidth:5}}
           onClick={sumbitCountry}
           disabled={!country}
           variant="outlined"
@@ -80,13 +85,13 @@ const CountryForm = () => {
 
         <Button
           variant="outlined"
-          style={{ marginLeft: "20px", backgroundColor: "#f0dab0" }}
+          style={{ marginLeft: "20px", backgroundColor: "#b394eb" ,marginTop:'1%',borderRadius:"25px"}}
           onClick={resetCountry}
         >
           Reset
         </Button>
-      </Container>
-
+      {/* </Container> */}
+      </div>
       {response && countryData ? (
         <CountryInformation props={countryData} />
       ) : null}

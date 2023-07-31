@@ -5,7 +5,9 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
+  // eslint-disable-next-line 
   Switch,
+  // eslint-disable-next-line 
   Link,
 } from "react-router-dom";
 function App() {
@@ -13,7 +15,6 @@ function App() {
     <div className="App">
       <header className="App-header">
       <h1 >Weather App</h1>
-      {/* <CountryForm/>   */}
       <Router>
       <Routes>
           <Route exact path="/" element={<CountryForm />}></Route>

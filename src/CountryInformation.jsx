@@ -1,20 +1,17 @@
 import React, { useState } from "react";
-import TextField from "@material-ui/core/TextField";
 import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Card from "@material-ui/core/Card";
 import axios from "axios";
-import WeatherCapital from "./WeatherCapital";
 import ErrorInformation from "./ErrorInformation";
 import Container from "@material-ui/core/Container";
 import { useNavigate } from "react-router-dom";
-
+import WeatherCapital from "./WeatherCapital";
 const CountryInformation = (props) => {
-  // console.log("info",props.props);
-  const navigate = useNavigate();
 
+  const navigate = useNavigate();
   const [response, setResponse] = useState(false);
-  // const [capitalInfo, setCapitalInfo] = useState();
+  const [capitalInfo, setCapitalInfo] = useState();
   const [error, setError] = useState(false);
   let capitalname = props.props?.capital;
   let latvalue=[];
@@ -28,8 +25,8 @@ const CountryInformation = (props) => {
       )
       .then((res) => {
         setResponse((pre) => true);
-        // setCapitalInfo(res.data);
-        navigate('/weather', { state: res.data });
+        setCapitalInfo(res.data);
+        // navigate('/weather', { state: res.data });
 
       })
       .catch((err) => {
@@ -40,7 +37,9 @@ const CountryInformation = (props) => {
   return (
     <>
     <Container>
-           <Card style={{ marginTop:"40px", backgroundColor: "#edb3f8"  }}>
+           <Card style={{ marginTop:"40px",width:'50%',marginLeft:'30%',
+           background: "linear-gradient(to bottom, #33ccff 0%, #ff99cc 100%)",
+  }}>
       <CardContent>
 
         <div className="displaydata">
@@ -62,7 +61,7 @@ const CountryInformation = (props) => {
         <div className="displaydata">
           <label> Flag:-</label>
           {/* <span className="valuedata"> */}
-          <img src= {props.props?.flags?.png} width="50px" height="40px"/>
+          <img src= {props.props?.flags?.png} style={{marginLeft:5}} width="30px" height="20px" alt="Country Flag"/>
           {/* </span> */}
         </div>
 
@@ -73,9 +72,9 @@ const CountryInformation = (props) => {
       </Card>
       
        
-        {/* {response && capitalInfo ? (
+        {response && capitalInfo ? (
           <WeatherCapital props={capitalInfo} />
-        ) : null} */}
+        ) : null}
         {error && <ErrorInformation />}
         </Container>
      
